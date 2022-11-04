@@ -3,6 +3,12 @@ const uri = "mongodb+srv://ROOT:LODfQLo6oHJAzhR3@cluster0.414dubm.mongodb.net/te
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 
+var collection = null;
+client.connect(err => {
+  collection = client.db("paquetesdb").collection("usuarios");
+  
+  
+})
 
 const express = require('express')
 
@@ -49,13 +55,8 @@ app.listen(port, () => {
 
 
 function crearUsuario (user){
-  client.connect(err => {
-    var collection = null;
-    collection = client.db("paquetesdb").collection("usuarios");
-    collection.insertOne(user);
-
-  
-  })
+ 
+  collection.insertOne(user);
   
   
 }
