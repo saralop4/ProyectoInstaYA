@@ -18,7 +18,7 @@ const app = express()
 app.use(express.json());
 
 
-const allowedOrigins = ['127.0.0.1'];
+const allowedOrigins = ['0.0.0.0'];
 
 app.use(
 
