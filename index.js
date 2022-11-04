@@ -48,12 +48,12 @@ app.listen(port, () => {
 })
 
 
-function crearUsuario (user) {
+function crearUsuario (user){
   client.connect(err => {
     var collection = null;
     collection = client.db("paquetesdb").collection("usuarios");
     collection.insertOne(user);
-    mongoClient.close();
+
   
   })
   
