@@ -20,7 +20,7 @@ const app = express()
 app.use(express.json());
 
 
-const port = process.env.PORT || 52197
+const port = process.env.PORT || 5000
 
 app.post('/crearUsuario', (req, res) => {
 
