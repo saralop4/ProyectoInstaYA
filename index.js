@@ -38,6 +38,8 @@ app.post('/crearUsuario', (req, res) => {
 
     
   } catch (error) {
+
+    console.log(error)
     res.send({status:false,mesaje:error})
   }
  
