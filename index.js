@@ -19,7 +19,7 @@ app.use(express.json());
 
 const port = process.env.PORT || 5000
 
-app.get('/crearUsuario', (req, res) => {
+app.post('/crearUsuario', (req, res) => {
 
   try {
 
