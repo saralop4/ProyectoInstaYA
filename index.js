@@ -31,39 +31,10 @@ app.post('/crearUsuario', (req, res) => {
     let nombre = req.body.nombre
     let correo = req.body.correo
 
-    invalidos = []
-
-    if(!usuario){
-      invalidos.push('usuario')
-    }
-
-    if(!contrasena){
-      invalidos.push('contrasena')
-    }
-
-    if(!nombre){
-      invalidos.push('nombre')
-    }
-    
-    if(!correo){
-      invalidos.push('correo')
-    }
-
-    if(invalidos.length == 0){
-     crearUsuario({
+    crearUsuario({
       usuario,contrasena,nombre,correo
      })
       res.send({status:true,mesaje:"Todo Ok"})
-    }else{
-
-      console.log(invalidos)
-      mensaje = "Por favor enviar:"
-      invalidos.forEach(element => {
-        mensaje += element+', '
-      });
-      res.send({status:false,mesaje: mensaje})
-
-    }
 
     
   } catch (error) {
