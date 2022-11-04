@@ -19,11 +19,10 @@ app.use(express.json());
 
 const port = process.env.PORT || 5000
 
-app.post('/crearUsuario', (req, res) => {
+app.get('/crearUsuario', (req, res) => {
 
   try {
 
-    let id = req.body.id
     let usuario = req.body.usuario
     let contrasena = req.body.contrasena
     let nombre = req.body.nombre
