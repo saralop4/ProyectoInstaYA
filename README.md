@@ -3,7 +3,7 @@
 </div>
 <br/>
 
-#Plataforma Recogida de Paquetes- InstaYa
+# Plataforma Recogida de Paquetes- InstaYa
 
 
 _Nota: Debe ubicarse en el carpeta raiz (backend)_
@@ -14,9 +14,9 @@ La empresa InstaYA requiere un sistema por medio del cual los usuarios puedan pr
 
 Los datos mínimos que requiere la empresa por parte del usuario para recoger el paquete son los siguientes:
 
-●	Dia y franja horaria en la cual se encuentra disponible el usuario para atender al personal encargado (Se debe programar con mínimo 24 horas de anticipación).
-●	Las dimensiones ancho x alto x largo, si es mercancía delicada o no y el peso aproximado.
-●	Dirección del lugar de recogida, incluyendo ciudad.
+## ●	Dia y franja horaria en la cual se encuentra disponible el usuario para atender al personal encargado (Se debe programar con mínimo 24 horas de anticipación).
+## ●	Las dimensiones ancho x alto x largo, si es mercancía delicada o no y el peso aproximado.
+## ●	Dirección del lugar de recogida, incluyendo ciudad.
 ●	Número de identificación personal y nombre completo de quien envía.
 ●	Dirección del lugar hacia donde se realiza el envío, incluyendo ciudad, así como el número de identificación personal y nombre completo de quien recibe.
 Deben tener en cuenta las siguientes funcionalidades:
