@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+<body>
+
+   <div class="padre">
+    <div class="card-header"><h3 class="text-center font-weight-light my-4">Crear Orden </h3></div>
+
+
+    
+    
+    <div class="card-body">
+        <form>
+            <div class="row mb-3">
+
+                <div class="row-custom">
+                    <div class="form-floating mb-3">
+                        <input size="16" type="date" class="form-control" id="fecha">
+                        <label for="inputEmail">Fecha</label>
+        
+                    </div>
+                 
+                    <div class="form-floating mb-3">
+                        <input size="16" type="time" class="form-control" id="hora">
+                        <label for="inputEmail">Hora</label>
+        
+                    </div>
+                </div>
+
+                    
+                <div class="row-custom">
+                    <div class="form-floating">
+                        <input name="usuario"  class="form-control" id="usuario" type="text" placeholder="Enter your first name" />
+                        <label for="inputFirstName">Largo</label>
+                    </div>
+                    <div class="form-floating ">
+                        <input name="usuario"  class="form-control" id="usuario" type="text" placeholder="Enter your first name" />
+                        <label for="inputFirstName">Largo</label>
+                    </div>
+                    <div class="form-floating ">
+                        <input name="usuario"  class="form-control" id="usuario" type="text" placeholder="Enter your first name" />
+                        <label for="inputFirstName">Alto</label>
+                    </div>
+                    <div class="form-floating ">
+                        <input name="usuario"  class="form-control" id="usuario" type="text" placeholder="Enter your first name" />
+                        <label for="inputFirstName">Peso</label>
+                    </div>
+                </div>
+               
+            </div>
+          
+            
+            <div class="form-floating mb-3">
+                <input class="form-control" id="ciudad_recogida" type="text" placeholder="" />
+                <label for="inputEmail">Direccion de recogida</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control" id="ciudad_recogida" type="text" placeholder="" />
+                <label for="inputEmail">Ciudad de recogida</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control" id="nombre_destinatario" type="text" placeholder="" />
+                <label for="inputEmail">Nombre de destinatario</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control" id="cedula" type="text" placeholder="" />
+                <label for="inputEmail">Cedula/Nit de destinatario</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input  class="form-control" id="direccion_entrega" type="text" placeholder="" />
+                <label for="inputEmail">Direccion de entrega</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input  class="form-control" id="ciudad_entrega" type="text" placeholder="" />
+                <label for="inputEmail">Ciudad de entrega</label>
+            </div>
+           
+            <div class="mt-4 mb-0">
+                <div class="d-grid" onclick="enviarFormulario()"><a class="btn btn-primary btn-block" >Crear Orden</a></div>
+            </div>
+        </form>
+    </div>
+    <a href="./index.html">Volver</a>
+    
+   </div>
+
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</body>
+
+<style>
+
+
+
+    .padre{
+        text-align: center;
+        max-width: 50%; 
+        border: 3px solid grey;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 10px;
+    }
+    
+
+    .row-custom{
+        display: flex !important;
+        gap: 20px;
+    }
+
+</style>
+</html>
