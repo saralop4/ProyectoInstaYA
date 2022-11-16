@@ -7,8 +7,6 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 var collection = null;
 client.connect(err => {
   collection = client.db("paquetesdb").collection("usuarios");
-  
-  
 })
 
 const express = require('express')
@@ -17,8 +15,12 @@ const cors = require('cors')
 const app = express()
 app.use(express.json());
 
-
 const allowedOrigins = ['0.0.0.0'];
+
+
+
+
+
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -28,6 +30,35 @@ app.use(function(req, res, next) {
 
 
 const port = process.env.PORT || 5000
+
+
+
+app.post('/login', (req, res) => {
+
+  let usuario = req.body.usuario
+  let contrasena = req.body.contrasena
+
+  var data = collection.findOne(
+    { usuario, contrasena},
+    (err,doc)=>{
+      console.log(doc)
+      if(doc){
+        res.send({status:true,data: doc,mesaje:"Ok"})
+      }else{
+        res.send({status:false,data: null,mesaje:"NO LOGIN"})
+      }
+
+
+    }
+  )
+
+  
+
+
+ 
+ 
+})
+
 
 app.post('/crearUsuario', (req, res) => {
 
