@@ -32,6 +32,7 @@ app.use(function(req, res, next) {
 const port = process.env.PORT || 5000
 
 
+//Auth
 
 app.post('/login', (req, res) => {
 
@@ -58,6 +59,9 @@ app.post('/login', (req, res) => {
  
  
 })
+
+
+//Usuario
 
 
 app.post('/crearUsuario', (req, res) => {
@@ -156,3 +160,48 @@ app.listen(port, () => {
 })
 
 
+
+
+
+//Ordenes 
+
+app.post('/crearOrden', (req, res) => {
+
+
+  client.connect(err => {
+    OrdenesCollection = client.db("paquetesdb").collection("Ordenes");
+
+    try {
+
+      let fecha = req.body.fecha
+      let hora = req.body.hora
+      let largo1 = req.body.largo1
+      let largo2 = req.body.largo2
+      let alto= req.body.alto
+      let peso = req.body.peso
+      let direRecog = req.body.direRecog
+      let ciudadRecog = req.body.ciudadRecog
+      let nombreDesti = req.body.nombreDesti
+      let cedulaDesti = req.body.cedulaDesti
+      let direcEntre = req.body.direcEntre
+      let ciudadEntre = req.body.ciudadEntre
+      
+      
+      OrdenesCollection.insertOne({
+        fecha,hora,largo1,largo2,alto,peso,direRecog,ciudadRecog,
+        nombreDesti,cedulaDesti,direcEntre,ciudadEntre
+      });
+      
+      res.send({status:true,mesaje:"Todo Ok"})
+  
+      
+    } catch (error) {
+  
+      console.log(error)
+      res.send({status:false,mesaje:error})
+    }
+  })
+  
+
+ 
+})
