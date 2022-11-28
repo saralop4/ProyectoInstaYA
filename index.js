@@ -18,10 +18,6 @@ app.use(express.json());
 const allowedOrigins = ['0.0.0.0'];
 
 
-
-
-
-
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -201,7 +197,35 @@ app.post('/crearOrden', (req, res) => {
       res.send({status:false,mesaje:error})
     }
   })
-  
+
 
  
+})
+
+
+app.get('/listarOrdens', async (req,res) =>  {
+
+
+
+   let ordenes =await collection.find({( ) =>{
+   
+
+    res.send({status:true,mesaje:"ok"})
+   })
+    
+
+
+})
+
+app.put('/actualizarOrden', (req,res)  => {
+
+  collection.updateOne(
+    {usuario:"sergio" },
+    {
+      $set: { "nombre": "sergio antonio de las nieves " }
+    }
+    ) 
+
+  res.send({status:true,mesaje:"ok"})
+
 })
