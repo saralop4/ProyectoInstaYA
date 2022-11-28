@@ -207,12 +207,10 @@ app.get('/listarOrdens', async (req,res) =>  {
 
 
 
-   let ordenes =await collection.find({( ) =>{
-   
+   let ordenes =await collection.find().toArray()
 
-    res.send({status:true,mesaje:"ok"})
-   })
-    
+   console.log(ordenes)
+   res.send({status:true,data:ordenes,mesaje:"ok"})
 
 
 })
