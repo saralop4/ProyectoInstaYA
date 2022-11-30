@@ -41,7 +41,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("https://proyecto-instaya.herokuapp.com/crearOrden", requestOptions)
+fetch("https://insta-ya.onrender.com/crearOrden", requestOptions)
   .then(response => response.text())
   .then(result => {
     data = JSON.parse(result)

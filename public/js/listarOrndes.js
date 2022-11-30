@@ -4,13 +4,16 @@ var raw = "";
 
 var requestOptions = {
   method: 'GET',
-  body: raw,
+
   redirect: 'follow'
 };
 
-fetch("localhost:5000/listarOrdens", requestOptions)
+fetch("https://insta-ya.onrender.com/listarOrdenes", requestOptions)
   .then(response => response.text())
-  .then(result => {
-    console.log(result)
-  })
+  .then(result =>{
+     console.log(result)}
+    array.forEach(element => {
+      
+    }); 
+  )
   .catch(error => console.log('error', error));

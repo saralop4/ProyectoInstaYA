@@ -18,7 +18,7 @@ function login (){
     redirect: 'follow'
     };
 
-    fetch("https://proyecto-instaya.herokuapp.com/login", requestOptions)
+    fetch("https://insta-ya.onrender.com/login", requestOptions)
     .then(response => response.text())
     .then(result => {
 

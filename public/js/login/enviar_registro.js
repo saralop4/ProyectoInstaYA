@@ -60,7 +60,7 @@ function send(usuario, contrasena, nombre, correo){
       redirect: 'follow'
     };
     
-    fetch("https://proyecto-instaya.herokuapp.com/crearUsuario", requestOptions)
+    fetch("https://insta-ya.onrender.com/crearUsuario", requestOptions)
       .then(response => 
         {
 
