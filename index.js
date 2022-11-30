@@ -203,7 +203,7 @@ app.post('/crearOrden', (req, res) => {
 })
 
 
-app.get('/listarOrdens', async (req,res) =>  {
+app.get('/listarOrdenes', async (req,res) =>  {
 
 
 
