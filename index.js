@@ -156,9 +156,6 @@ app.listen(port, () => {
 })
 
 
-
-
-
 //Ordenes 
 
 app.post('/crearOrden', (req, res) => {
@@ -181,7 +178,7 @@ app.post('/crearOrden', (req, res) => {
       let cedulaDesti = req.body.cedulaDesti
       let direcEntre = req.body.direcEntre
       let ciudadEntre = req.body.ciudadEntre
-      let estado = 'guardado'
+      let estado = 'Guardado'
       
       
       OrdenesCollection.insertOne({
