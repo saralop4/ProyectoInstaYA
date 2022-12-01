@@ -21,9 +21,9 @@ fetch("https://insta-ya.onrender.com/listarOrdenes", requestOptions)
       <tr>
       <th scope="row">1</th>
       <td>${element.fecha}</td>
-      <td>Cartagena</td>
-      <td>Almirante Colon</td>
-      <td>Guardado</td>
+      <td>${element.ciudadEntre}</td>
+      <td>${element.direcEntre}</td>
+      <td>${element.estado}</td>
     </tr>
     
     `

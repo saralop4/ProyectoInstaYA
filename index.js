@@ -181,11 +181,12 @@ app.post('/crearOrden', (req, res) => {
       let cedulaDesti = req.body.cedulaDesti
       let direcEntre = req.body.direcEntre
       let ciudadEntre = req.body.ciudadEntre
+      let estado = 'guardado'
       
       
       OrdenesCollection.insertOne({
         fecha,hora,largo1,largo2,alto,peso,direRecog,ciudadRecog,
-        nombreDesti,cedulaDesti,direcEntre,ciudadEntre
+        nombreDesti,cedulaDesti,direcEntre,ciudadEntre,estado
       });
       
       res.send({status:true,mesaje:"Todo Ok"})
@@ -209,7 +210,7 @@ app.get('/listarOrdenes', async (req,res) =>  {
 
    let ordenes =await OrdenesCollection.find().toArray()
 
-   console.log(ordenes)
+
    res.send({status:true,data:ordenes,mesaje:"ok"})
 
 
