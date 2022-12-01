@@ -205,9 +205,9 @@ app.post('/crearOrden', (req, res) => {
 
 app.get('/listarOrdenes', async (req,res) =>  {
 
+  OrdenesCollection = client.db("paquetesdb").collection("Ordenes");
 
-
-   let ordenes =await collection.find().toArray()
+   let ordenes =await OrdenesCollection.find().toArray()
 
    console.log(ordenes)
    res.send({status:true,data:ordenes,mesaje:"ok"})
