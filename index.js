@@ -79,7 +79,7 @@ app.post('/crearUsuario', (req, res) => {
         console.error(err);
       } 
 
-      userId = data.insertedId.toString().replaceAll('new ObjectId("', '').replaceAll('")', '');
+      userId = data.insertedId;
       res.send({status:true,data:{userId,nombre},mesaje:"Todo Ok"})
   
 
