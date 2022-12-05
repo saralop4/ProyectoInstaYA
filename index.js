@@ -73,8 +73,20 @@ app.post('/crearUsuario', (req, res) => {
 
     collection.insertOne({
       usuario,contrasena,nombre,correo
+    },(err,data)=>{
+
+      if (err) {
+        console.error(err);
+      } 
+
+      userId = data.insertedId.toString().replaceAll('new ObjectId("', '').replaceAll('")', '');
+      res.send({status:true,data:{userId,nombre},mesaje:"Todo Ok"})
+  
+
     });
-      res.send({status:true,mesaje:"Todo Ok"})
+
+
+
 
     
   } catch (error) {
@@ -179,11 +191,12 @@ app.post('/crearOrden', (req, res) => {
       let direcEntre = req.body.direcEntre
       let ciudadEntre = req.body.ciudadEntre
       let estado = 'Guardado'
+      let userId =  req.body.userId
       
       
       OrdenesCollection.insertOne({
         fecha,hora,largo1,largo2,alto,peso,direRecog,ciudadRecog,
-        nombreDesti,cedulaDesti,direcEntre,ciudadEntre,estado
+        nombreDesti,cedulaDesti,direcEntre,ciudadEntre,estado,userId
       });
       
       res.send({status:true,mesaje:"Todo Ok"})
@@ -203,25 +216,52 @@ app.post('/crearOrden', (req, res) => {
 
 app.get('/listarOrdenes', async (req,res) =>  {
 
-  OrdenesCollection = client.db("paquetesdb").collection("Ordenes");
+   OrdenesCollection = client.db("paquetesdb").collection("Ordenes");
 
-   let ordenes =await OrdenesCollection.find().toArray()
-
+   let ordenes = await OrdenesCollection.find({userId: req.body.userId }).toArray()
 
    res.send({status:true,data:ordenes,mesaje:"ok"})
 
 
 })
 
-app.put('/actualizarOrden', (req,res)  => {
+app.put('/actualizarOrden/:id', (req,res)  => {
 
-  collection.updateOne(
-    {usuario:"sergio" },
+  OrdenesCollection = client.db("paquetesdb").collection("Ordenes");
+
+  const orderID = req.params.id
+
+  
+
+  OrdenesCollection.updateOne(
+    { _id: new ObjectID( orderID ) },
     {
-      $set: { "nombre": "sergio antonio de las nieves " }
-    }
-    ) 
+      $set: { "nombreDesti": "Holalaa" }
+    },
+    { upsert: true }
+  ) 
 
-  res.send({status:true,mesaje:"ok"})
+    res.send({status:true,mesaje:"ok"})
+
+
+})
+
+app.delete('/eliminarOrden/:id', (req, res) => {
+
+  try {
+ 
+    OrdenesCollection = client.db("paquetesdb").collection("Ordenes");
+    const orderID = req.params.id;
+  
+    OrdenesCollection.deleteOne(
+      { _id: new ObjectID( orderID ) },
+    )
+
+    res.send({status:true,mesaje:"Todo Ok"})
+
+  } catch (error) {
+    console.log(error)
+  res.send({status:false,mesaje:error})
+  }
 
 })
