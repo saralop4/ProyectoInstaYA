@@ -32,13 +32,13 @@ fetch(url, requestOptions)
     mapSelect = {
         "Guardado":"1",
         "Cumplido":"2",
-        "Canselado":"3"
+        "Cancelado":"3"
     }
 
     mapSelect2 = {
         "1":"Guardado",
         "2":"Cumplido",
-        "3":"Canselado"
+        "3":"Cancelado"
     }
 
     document.getElementById("fecha").value = data.data.fecha || ''
