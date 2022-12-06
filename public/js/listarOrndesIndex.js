@@ -14,7 +14,7 @@ var value = JSON.parse( localStorage.getItem('user') );
 
  console.log(value.userId)
 
-let url = `http://127.0.0.1:5000/listarOrdenes/`+value.userId
+let url = `https://insta-ya.onrender.com/listarOrdenes/`+value.userId
 
 console.log(url)
 
@@ -61,7 +61,7 @@ fetch(url, requestOptions)
       redirect: 'follow'
     };
 
-    fetch("http://127.0.0.1:5000/eliminarOrden/"+id, requestOptions)
+    fetch("https://insta-ya.onrender.com/eliminarOrden/"+id, requestOptions)
       .then(response => response.text())
       .then(async result => {
 

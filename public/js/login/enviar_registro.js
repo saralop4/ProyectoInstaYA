@@ -54,7 +54,7 @@ function send(usuario, contrasena, nombre, correo){
       redirect: 'follow'
     };
     
-    fetch("http://127.0.0.1:5000/crearUsuario", requestOptions)
+    fetch("https://insta-ya.onrender.com/crearUsuario", requestOptions)
       .then(async response => 
         {
 

@@ -18,7 +18,7 @@ function login (){
     redirect: 'follow'
     };
 
-    fetch("http://127.0.0.1:5000/login", requestOptions)
+    fetch("https://insta-ya.onrender.com/login", requestOptions)
 
     .then( async result => {
 

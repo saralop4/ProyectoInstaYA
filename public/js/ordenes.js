@@ -42,7 +42,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("http://127.0.0.1:5000/crearOrden", requestOptions)
+fetch("https://insta-ya.onrender.com/crearOrden", requestOptions)
   .then(response => response.text())
   .then(result => {
     data = JSON.parse(result)

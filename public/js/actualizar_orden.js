@@ -19,7 +19,7 @@ var idOrden = urlParams.get('id');
 console.log(idOrden)
 
 
-let url = `http://127.0.0.1:5000/VerOrden/`+idOrden
+let url = `https://insta-ya.onrender.com/VerOrden/`+idOrden
 
 console.log(url)
 
@@ -109,7 +109,7 @@ fetch(url, requestOptions)
     redirect: 'follow'
     };
 
-    fetch("http://127.0.0.1:5000/actualizarOrden/"+idOrden, requestOptions)
+    fetch("https://insta-ya.onrender.com/actualizarOrden/"+idOrden, requestOptions)
     .then(response => response.text())
     .then(result => {
         data = JSON.parse(result)
