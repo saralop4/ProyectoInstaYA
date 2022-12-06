@@ -7,8 +7,8 @@ function login (){
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({
-    "usuario": usuario,
-    "contrasena": contrasena
+        "usuario": usuario,
+        "contrasena": contrasena
     });
 
     var requestOptions = {
@@ -19,17 +19,24 @@ function login (){
     };
 
     fetch("https://insta-ya.onrender.com/login", requestOptions)
-    .then(response => response.text())
-    .then(result => {
+
+    .then( async result => {
 
       
+        data = await result.json()
 
-        data = JSON.parse(result)
         console.log(data)
+        
+        localStorage.setItem('user', JSON.stringify({nombre: data.data.nombre, userId:data.data._id  }));
+        var value = JSON.parse( localStorage.getItem('user') );
+
+
+ 
+        console.log(value)
 
         if(data.status){
             console.log("Okkkk")
-            location.href = "./index.html"
+           location.href = "./index.html"
         }else{
             Swal.fire({
                 title: 'Alerta',

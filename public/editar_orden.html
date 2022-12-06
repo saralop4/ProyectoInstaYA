@@ -19,13 +19,9 @@
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div>
-            </form>
+          
             <!-- Navbar-->
+            <p class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4" style="color: white; " id="nombre"> </p>
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
@@ -33,7 +29,7 @@
                         <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                        <li><a class="dropdown-item" href="#!" onclick="logout()">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -58,7 +54,6 @@
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="./listar_ordenes.html">Listado de Ordenes</a>
                                     <a class="nav-link" href="./crar_orden.html">Crear Orden</a>
-                                    <a class="nav-link" href="./editar_orden.html">Actualizar de Ordenes</a>
                                 </nav>
                             </div>
                            
@@ -102,19 +97,19 @@
                     
                 <div class="row-custom">
                     <div class="form-floating">
-                        <input name="usuario"  class="form-control" id="usuario" type="text" placeholder="Enter your first name" />
+                        <input name="usuario"  class="form-control" id="largo1" type="text" placeholder="Enter your first name" />
                         <label for="inputFirstName">Largo</label>
                     </div>
                     <div class="form-floating ">
-                        <input name="usuario"  class="form-control" id="usuario" type="text" placeholder="Enter your first name" />
+                        <input name="usuario"  class="form-control" id="largo2" type="text" placeholder="Enter your first name" />
                         <label for="inputFirstName">Largo</label>
                     </div>
                     <div class="form-floating ">
-                        <input name="usuario"  class="form-control" id="usuario" type="text" placeholder="Enter your first name" />
+                        <input name="usuario"  class="form-control" id="alto" type="text" placeholder="Enter your first name" />
                         <label for="inputFirstName">Alto</label>
                     </div>
                     <div class="form-floating ">
-                        <input name="usuario"  class="form-control" id="usuario" type="text" placeholder="Enter your first name" />
+                        <input name="usuario"  class="form-control" id="peso" type="text" placeholder="Enter your first name" />
                         <label for="inputFirstName">Peso</label>
                     </div>
                 </div>
@@ -125,7 +120,7 @@
           
 
             <div class="form-floating mb-3">
-                <select class="form-select" aria-label="">
+                <select class="form-select" aria-label="" id="estado">
                     <option selected>Estado</option>
                     <option value="1">Guardado</option>
                     <option value="2">Cumplido</option>
@@ -134,32 +129,32 @@
             </div>
             
             <div class="form-floating mb-3">
-                <input class="form-control" id="ciudad_recogida" type="text" placeholder="" />
+                <input class="form-control" id="direRecog" type="text" placeholder="" />
                 <label for="inputEmail">Direccion de recogida</label>
             </div>
             <div class="form-floating mb-3">
-                <input class="form-control" id="ciudad_recogida" type="text" placeholder="" />
+                <input class="form-control" id="ciudadRecog" type="text" placeholder="" />
                 <label for="inputEmail">Ciudad de recogida</label>
             </div>
             <div class="form-floating mb-3">
-                <input class="form-control" id="nombre_destinatario" type="text" placeholder="" />
+                <input class="form-control" id="nombreDesti" type="text" placeholder="" />
                 <label for="inputEmail">Nombre de destinatario</label>
             </div>
             <div class="form-floating mb-3">
-                <input class="form-control" id="cedula" type="text" placeholder="" />
+                <input class="form-control" id="cedulaDesti" type="text" placeholder="" />
                 <label for="inputEmail">Cedula/Nit de destinatario</label>
             </div>
             <div class="form-floating mb-3">
-                <input  class="form-control" id="direccion_entrega" type="text" placeholder="" />
+                <input  class="form-control" id="direcEntre" type="text" placeholder="" />
                 <label for="inputEmail">Direccion de entrega</label>
             </div>
             <div class="form-floating mb-3">
-                <input  class="form-control" id="ciudad_entrega" type="text" placeholder="" />
+                <input  class="form-control" id="ciudadEntre" type="text" placeholder="" />
                 <label for="inputEmail">Ciudad de entrega</label>
             </div>
            
             <div class="mt-4 mb-0">
-                <div class="d-grid" onclick="enviarFormulario()"><a class="btn btn-primary btn-block" >Actualizar Orden</a></div>
+                <div class="d-grid" onclick="updateOrder()"><a class="btn btn-primary btn-block" >Actualizar Orden</a></div>
             </div>
         </form>
     </div>
@@ -182,6 +177,9 @@
                 </footer>
             </div>
         </div>
+
+        
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
@@ -189,6 +187,20 @@
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
+        <script src="./js/actualizar_orden.js"></script>
+        <script src="./js/logout.js"></script>
+
+        <script>
+
+            var value = JSON.parse( localStorage.getItem('user') );
+
+
+            console.log(value)
+            if(value == null){
+                location.href = './login.html'
+            }
+
+        </script>
     </body>
 
     

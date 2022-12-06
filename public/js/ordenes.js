@@ -31,7 +31,8 @@ var raw = JSON.stringify({
   "nombreDesti": nombreDesti,
   "cedulaDesti": cedulaDesti,
   "direcEntre": direcEntre,
-  "ciudadEntre": ciudadEntre
+  "ciudadEntre": ciudadEntre,
+  "userId": JSON.parse( localStorage.getItem('user') ).userId
 });
 
 var requestOptions = {
@@ -41,7 +42,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("https://insta-ya.onrender.com/crearOrden", requestOptions)
+fetch("http://127.0.0.1:5000/crearOrden", requestOptions)
   .then(response => response.text())
   .then(result => {
     data = JSON.parse(result)

@@ -1,33 +1,89 @@
 console.log("==Sucess==")
 
+var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
 var raw = "";
 
 var requestOptions = {
   method: 'GET',
-
   redirect: 'follow'
 };
 
-fetch("https://insta-ya.onrender.com/listarOrdenes", requestOptions)
+var value = JSON.parse( localStorage.getItem('user') );
+
+ console.log(value.userId)
+
+let url = `http://127.0.0.1:5000/listarOrdenes/`+value.userId
+
+console.log(url)
+
+fetch(url, requestOptions)
   .then(response => response.text())
   .then(result =>{
     let data =  JSON.parse(result);
 
+
+    i = 1
     data.data.forEach(element => {
       console.log(element)
 
       document.getElementById("lista").innerHTML += ` 
       
       <tr>
-      <th scope="row">1</th>
+      <th scope="row"> ${ i }</th>
+      <th scope="row"> ${  element._id }</th>
       <td>${element.fecha}</td>
       <td>${element.ciudadEntre}</td>
       <td>${element.direcEntre}</td>
       <td>${element.estado}</td>
+      <td>
+
+        <div class="row" >
+         <a class="dropdown-item" href="editar_orden.html?id=${ element._id}" >Editar</a>
+         <a class="dropdown-item" href="#" onclick="deleteOrder('${ element._id }')" >Eliminar</a>
+        </div>
+
+      </td>
+
+
     </tr>
     
     `
-       
+    i++
     }); 
   })
   .catch(error => console.log('error', error));
+
+
+
+
+  function deleteOrder(id){
+
+
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+
+    fetch("http://127.0.0.1:5000/eliminarOrden/"+id, requestOptions)
+      .then(response => response.text())
+      .then(async result => {
+
+        Swal.fire({
+          title: 'Orden eliminada con exito',
+          icon: 'success',
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          showConfirmButton: false,
+        })
+
+        await setTimeout(function(){
+          location.href = './listar_ordenes.html'
+        }, 1000);
+
+
+      })
+      .catch(error => console.log('error', error));
+
+  }

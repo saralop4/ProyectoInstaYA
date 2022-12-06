@@ -40,7 +40,11 @@ app.post('/login', (req, res) => {
     (err,doc)=>{
       console.log(doc)
       if(doc){
-        res.send({status:true,data: doc,mesaje:"Ok"})
+
+        userId = doc._id;
+        console.log(doc)
+        res.send({status:true,data:{userId:userId,nombre:doc.nombre},mesaje:"Todo Ok"})
+        // res.send({status:true,data: doc,mesaje:"Ok"})
       }else{
         res.send({status:false,data: null,mesaje:"NO LOGIN"})
       }
@@ -214,29 +218,47 @@ app.post('/crearOrden', (req, res) => {
 })
 
 
-app.get('/listarOrdenes', async (req,res) =>  {
+app.get('/listarOrdenes/:id', async (req,res) =>  {
 
    OrdenesCollection = client.db("paquetesdb").collection("Ordenes");
 
-   let ordenes = await OrdenesCollection.find({userId: req.body.userId }).toArray()
+   let ordenes = await OrdenesCollection.find({userId: req.params.id }).toArray()
 
    res.send({status:true,data:ordenes,mesaje:"ok"})
 
 
 })
 
-app.put('/actualizarOrden/:id', (req,res)  => {
+app.post('/actualizarOrden/:id', (req,res)  => {
 
   OrdenesCollection = client.db("paquetesdb").collection("Ordenes");
 
   const orderID = req.params.id
+
+  let fecha = req.body.fecha
+  let hora = req.body.hora
+  let largo1 = req.body.largo1
+  let largo2 = req.body.largo2
+  let alto= req.body.alto
+  let peso = req.body.peso
+  let direRecog = req.body.direRecog
+  let ciudadRecog = req.body.ciudadRecog
+  let nombreDesti = req.body.nombreDesti
+  let cedulaDesti = req.body.cedulaDesti
+  let direcEntre = req.body.direcEntre
+  let ciudadEntre = req.body.ciudadEntre
+  let estado =  req.body.estado
+  let userId =  req.body.userId
 
   
 
   OrdenesCollection.updateOne(
     { _id: new ObjectID( orderID ) },
     {
-      $set: { "nombreDesti": "Holalaa" }
+      $set: {
+        fecha,hora,largo1,largo2,alto,peso,direRecog,ciudadRecog,
+        nombreDesti,cedulaDesti,direcEntre,ciudadEntre,estado,userId
+      }
     },
     { upsert: true }
   ) 
@@ -246,7 +268,7 @@ app.put('/actualizarOrden/:id', (req,res)  => {
 
 })
 
-app.delete('/eliminarOrden/:id', (req, res) => {
+app.get('/eliminarOrden/:id', (req, res) => {
 
   try {
  
@@ -261,7 +283,31 @@ app.delete('/eliminarOrden/:id', (req, res) => {
 
   } catch (error) {
     console.log(error)
-  res.send({status:false,mesaje:error})
+    res.send({status:false,mesaje:error})
   }
 
 })
+
+app.get('/VerOrden/:id', (req, res) => {
+
+  try {
+   
+   OrdenesCollection = client.db("paquetesdb").collection("Ordenes");
+   const ordenId = req.params.id;
+ 
+   var data = OrdenesCollection.findOne(
+     { _id: new ObjectID(ordenId) },
+     (err,doc)=>{
+       res.send({status:true,mesaje:"Todo Ok",data:doc})
+     }
+   )
+ 
+ 
+  } catch (error) {
+
+   console.log(error)
+   res.send({status:false,mesaje:error})
+
+  }
+ 
+ })

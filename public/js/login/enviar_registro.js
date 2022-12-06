@@ -28,9 +28,7 @@ function enviarFormulario(){
             cancelButtonColor: '#d33',
             confirmButtonText: 'Ok'
           })
-          
-
-        
+    
     }else{
         
         console.log("Enviado")
@@ -38,12 +36,8 @@ function enviarFormulario(){
     }
 
     console.log(correo)
-  
-   
-   
+     
 }
-
-
 
 function send(usuario, contrasena, nombre, correo){
     var myHeaders = new Headers();
@@ -61,10 +55,8 @@ function send(usuario, contrasena, nombre, correo){
     };
     
     fetch("https://insta-ya.onrender.com/crearUsuario", requestOptions)
-      .then(response => 
+      .then(async response => 
         {
-
-                console.log(response)
 
                 Swal.fire({
                     title: 'Usuario creado',
@@ -74,7 +66,7 @@ function send(usuario, contrasena, nombre, correo){
                     confirmButtonText: 'Ok'
                   }).then((result) => {
                     if (result.isConfirmed) {
-                        location.href = './login.html'
+                     location.href = './login.html'
                     }
                   })
 
