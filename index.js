@@ -311,3 +311,33 @@ app.get('/VerOrden/:id', (req, res) => {
   }
  
  })
+
+ setInterval( async () => {
+
+  OrdenesCollection = client.db("paquetesdb").collection("Ordenes");
+
+  let ordenes = await OrdenesCollection.find().toArray() 
+
+  i = 1
+  ordenes.forEach(element => {
+
+    OrdenesCollection.updateOne(
+      { _id: new ObjectID( element._id ) },
+      {
+        $set: {
+          estado: "Cumplido"
+        }
+      },
+      { upsert: true }
+    ) 
+
+    console.log("Ok #"+i)
+
+    i++
+    
+  });
+  console.log("Ya")
+  
+  
+ }, 86400000 );
+

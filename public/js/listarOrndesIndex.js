@@ -28,32 +28,24 @@ fetch(url, requestOptions)
     data.data.forEach(element => {
       console.log(element)
 
-      document.getElementById("lista").innerHTML += ` 
+      if(element.estado == 'Cumplido'){
+        document.getElementById("lista").innerHTML += ` 
       
-      <tr>
-      <th scope="row"> ${ i }</th>
-      <th scope="row"> ${  element._id }</th>
-      <td>${element.fecha}</td>
-      <td>${element.ciudadEntre}</td>
-      <td>${element.direcEntre}</td>
-      <td>${element.estado}</td>
-      <td>
+        <tr>
+        <th scope="row"> ${ i }</th>
+        <th scope="row"> ${  element._id }</th>
+        <td>${element.fecha}</td>
+        <td>${element.ciudadEntre}</td>
+        <td>${element.direcEntre}</td>
+        <td>${element.estado}</td>
+     
+  
+      </tr>
+      
+      `
+      i++
+      }
 
-        <div class="row" >
-
-       
-        
-         <a class="" href="editar_orden.html?id=${ element._id}" > <ion-icon name="create-outline"></ion-icon></a>
-         <a class="" href="#" onclick="deleteOrder('${ element._id }')" > <ion-icon name="trash-outline"></ion-icon></a>
-        </div>
-
-      </td>
-
-
-    </tr>
-    
-    `
-    i++
     }); 
   })
   .catch(error => console.log('error', error));

@@ -18,7 +18,7 @@ function login (){
     redirect: 'follow'
     };
 
-    fetch("https://insta-ya.onrender.com/login", requestOptions)
+    fetch("http://127.0.0.1:5000/login", requestOptions)
 
     .then( async result => {
 
@@ -27,7 +27,7 @@ function login (){
 
         console.log(data)
         
-        localStorage.setItem('user', JSON.stringify({nombre: data.data.nombre, userId:data.data._id  }));
+        localStorage.setItem('user', JSON.stringify({nombre: data.data.nombre, userId:data.data.userId  }));
         var value = JSON.parse( localStorage.getItem('user') );
 
 
