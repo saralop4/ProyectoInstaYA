@@ -9,6 +9,12 @@ function enviarFormulario(){
     correo = document.getElementById("correo").value
 
     let mensaje = null
+    
+  if(!validarEmail(correo)){
+    mensaje= "Email invalido"
+  }
+
+    
     if( !usuario || !contrasena || !nombre || !correo ){
             mensaje= "Todos los campos debes estar digitados"
 
@@ -73,4 +79,13 @@ function send(usuario, contrasena, nombre, correo){
         }
       )
 
+}
+
+
+function validarEmail(valor) {
+  if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(valor)){
+   return true;
+  } else {
+   return false;
+  }
 }

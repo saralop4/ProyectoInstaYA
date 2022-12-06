@@ -22,7 +22,8 @@ function login (){
 
     .then( async result => {
 
-      
+      try {
+        
         data = await result.json()
 
         console.log(data)
@@ -47,6 +48,16 @@ function login (){
                 confirmButtonText: 'Ok'
               })
         }
+      } catch (error) {
+        Swal.fire({
+            title: 'Alerta',
+            text: "Usuario y/o contraseña incorrectos.",
+            icon: 'warning',
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ok'
+          })
+      }
     })
     .catch(error => console.log('error', error));
 
