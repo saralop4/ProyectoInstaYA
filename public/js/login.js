@@ -33,7 +33,7 @@ function login (){
 
 
  
-        console.log(value)
+        console.log(value)     
 
         if(data.status){
             console.log("Okkkk")
